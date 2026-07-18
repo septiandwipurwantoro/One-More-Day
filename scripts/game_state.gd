@@ -23,6 +23,7 @@ func harvest(harvested_mandrake: Mandrake) -> void:
 	harvesting = true
 	for mandrake_field in mandrake_fields:
 		var mandrake: Mandrake = mandrake_fields[mandrake_field]
-		if mandrake == harvested_mandrake: continue
 		if mandrake_field is MandrakeField:
-			pass
+			mandrake_field.scream()
+			
+		if mandrake == harvested_mandrake: mandrake_field.pull_out()

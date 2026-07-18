@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bqkuyc1bvkbg2"]
+
+[ext_resource type="Script" uid="uid://bypvxl77itys8" path="res://scripts/mandrake_field.gd" id="1_etgx3"]
+[ext_resource type="Script" uid="uid://1eje76w3hbup" path="res://scripts/inspect_area.gd" id="2_etgx3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_356b5"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"mature",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"seed",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"sprout",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"young",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_356b5"]
+size = Vector2(64, 64)
+
+[node name="MandrakeField" type="Node2D" unique_id=1204625407]
+script = ExtResource("1_etgx3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=590783526]
+sprite_frames = SubResource("SpriteFrames_356b5")
+animation = &"empty"
+
+[node name="InspectArea" type="Area2D" parent="." unique_id=717035307]
+script = ExtResource("2_etgx3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InspectArea" unique_id=2071763618]
+shape = SubResource("RectangleShape2D_356b5")

@@ -5,8 +5,7 @@ func interact(interactor: Player) -> void:
 		_harvest() if GameState.harvesting else _inspect()
 	
 func _inspect() -> void:
-	var mandrake: Mandrake = owner.planted_mandrake
-	UIManager.show_mandrake_status(mandrake)
+	UIManager.show_mandrake_status(owner)
 
 func _harvest() -> void:
 	var mandrake: Mandrake = owner.planted_mandrake

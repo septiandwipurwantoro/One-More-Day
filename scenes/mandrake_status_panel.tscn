@@ -81,7 +81,12 @@ layout_mode = 2
 text = "Harvest"
 
 [node name="LeaveButton" type="Button" parent="HBoxContainer/VBoxContainer/ActionButtons" unique_id=1316962634]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Leave"
 
+[connection signal="button_up" from="HBoxContainer/VBoxContainer/ActionButtons/PlantButton" to="." method="_on_plant_button_button_up"]
+[connection signal="button_up" from="HBoxContainer/VBoxContainer/ActionButtons/WaterButton" to="." method="_on_water_button_button_up"]
+[connection signal="button_up" from="HBoxContainer/VBoxContainer/ActionButtons/UsePotionButton" to="." method="_on_use_potion_button_button_up"]
+[connection signal="button_up" from="HBoxContainer/VBoxContainer/ActionButtons/HarvestButton" to="." method="_on_harvest_button_button_up"]
 [connection signal="button_up" from="HBoxContainer/VBoxContainer/ActionButtons/LeaveButton" to="." method="_on_leave_button_button_up"]
