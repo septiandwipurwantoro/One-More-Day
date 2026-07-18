@@ -1,21 +1,166 @@
 [gd_scene format=3 uid="uid://bfcbs4javfwsi"]
 
 [ext_resource type="PackedScene" uid="uid://de6g8qaprslsx" path="res://scenes/player.tscn" id="1_6sg4v"]
+[ext_resource type="Texture2D" uid="uid://bvoyn3ag1722g" path="res://assets/sprites/mandrake_gargen.png" id="1_6x6ry"]
 [ext_resource type="PackedScene" uid="uid://bqkuyc1bvkbg2" path="res://scenes/mandrake_field.tscn" id="2_7dv7v"]
 [ext_resource type="PackedScene" uid="uid://c8hu78y332pdh" path="res://scenes/ui_manager.tscn" id="3_fcmd2"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_356b5"]
+size = Vector2(20, 534)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6x6ry"]
+size = Vector2(20, 311.54776)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bg3bc"]
+size = Vector2(20, 406.2329)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngcy1"]
+size = Vector2(20, 256.00006)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbn7n"]
+size = Vector2(20, 815.0001)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qorsj"]
+size = Vector2(20, 413.65756)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rupx6"]
+size = Vector2(20, 333.75452)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2bh3"]
+size = Vector2(20, 672)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ttoy1"]
+size = Vector2(20, 141.00002)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_suwnt"]
+size = Vector2(20, 95)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lng5s"]
+size = Vector2(20, 248.7463)
+
 [node name="MandrakeGarden" type="Node2D" unique_id=1938493377]
 
+[node name="Environment" type="Node2D" parent="." unique_id=1489881899]
+
+[node name="Garden" type="Sprite2D" parent="Environment" unique_id=346203768]
+position = Vector2(640, 0)
+scale = Vector2(5, 5)
+texture = ExtResource("1_6x6ry")
+
+[node name="Walls" type="StaticBody2D" parent="Environment" unique_id=766426503]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Walls" unique_id=1464084105]
+position = Vector2(10, 713)
+shape = SubResource("RectangleShape2D_356b5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment/Walls" unique_id=1820102246]
+position = Vector2(1275, 713)
+shape = SubResource("RectangleShape2D_356b5")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Environment/Walls" unique_id=530553984]
+position = Vector2(1159.6488, 1094.3513)
+rotation = 0.7853982
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_6x6ry")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Environment/Walls" unique_id=1686726511]
+position = Vector2(157.125, 339.875)
+rotation = 0.7853982
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_bg3bc")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Environment/Walls" unique_id=699690242]
+position = Vector2(412, 215)
+rotation = 1.5707964
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_ngcy1")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Environment/Walls" unique_id=347059940]
+position = Vector2(867, 215)
+rotation = 1.5707964
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_ngcy1")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Environment/Walls" unique_id=892922414]
+position = Vector2(645.49994, 1210)
+rotation = 1.5707964
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_hbn7n")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Environment/Walls" unique_id=154015516]
+position = Vector2(645.49994, -680)
+rotation = 1.5707964
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_hbn7n")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Environment/Walls" unique_id=2052332656]
+position = Vector2(1133.75, 344.74997)
+rotation = -0.7853982
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_qorsj")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Environment/Walls" unique_id=922134273]
+position = Vector2(121.00001, 1091)
+rotation = -0.7853982
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_rupx6")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Environment/Walls" unique_id=1478895783]
+position = Vector2(749, -111)
+shape = SubResource("RectangleShape2D_y2bh3")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Environment/Walls" unique_id=1819684719]
+position = Vector2(537, -111)
+shape = SubResource("RectangleShape2D_y2bh3")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Environment/Walls" unique_id=786140058]
+position = Vector2(469.5, -440)
+rotation = 1.5707964
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_ttoy1")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="Environment/Walls" unique_id=1648002119]
+position = Vector2(815, -440)
+rotation = 1.5707964
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_ttoy1")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="Environment/Walls" unique_id=395111850]
+position = Vector2(1039, -641.5)
+shape = SubResource("RectangleShape2D_suwnt")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="Environment/Walls" unique_id=1792192892]
+position = Vector2(247, -642.5)
+shape = SubResource("RectangleShape2D_suwnt")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="Environment/Walls" unique_id=569252146]
+position = Vector2(963.44507, -519.4451)
+rotation = 0.7853982
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_lng5s")
+
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="Environment/Walls" unique_id=1488673544]
+position = Vector2(323.00003, -518)
+rotation = -0.7853982
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_lng5s")
+
 [node name="MandrakeField" parent="." unique_id=1204625407 instance=ExtResource("2_7dv7v")]
+visible = false
 position = Vector2(564, 228)
 
 [node name="MandrakeField2" parent="." unique_id=53688692 instance=ExtResource("2_7dv7v")]
+visible = false
 position = Vector2(634, 461)
 
 [node name="MandrakeField3" parent="." unique_id=833351129 instance=ExtResource("2_7dv7v")]
+visible = false
 position = Vector2(464, 447)
 
 [node name="Player" parent="." unique_id=536877065 instance=ExtResource("1_6sg4v")]
 position = Vector2(333, 241)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=165029062]
+scale = Vector2(0.33333334, 0.33333334)
 
 [node name="UIManager" parent="." unique_id=275313636 instance=ExtResource("3_fcmd2")]
