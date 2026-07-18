@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c8hu78y332pdh"]
+
+[ext_resource type="Script" uid="uid://cc7tqwthd0xad" path="res://scripts/ui_manager.gd" id="1_reske"]
+[ext_resource type="PackedScene" uid="uid://ci14ioryhopm" path="res://scenes/gui.tscn" id="2_j2mt3"]
+[ext_resource type="PackedScene" uid="uid://7r3synusev8c" path="res://scenes/mandrake_status_panel.tscn" id="3_ixhu3"]
+
+[node name="UIManager" type="CanvasLayer" unique_id=275313636]
+script = ExtResource("1_reske")
+
+[node name="GUI" parent="." unique_id=391309277 instance=ExtResource("2_j2mt3")]
+
+[node name="MandrakeStatusPanel" parent="." unique_id=1397978618 instance=ExtResource("3_ixhu3")]
+visible = false

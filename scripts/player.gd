@@ -75,7 +75,7 @@ func _get_input_direction() -> Vector2:
 		return Vector2(0, sign(raw.y))
 
 func _on_interaction_area_area_entered(area: Area2D) -> void:
-	if area is Interactable: interactable = area
+	if area is Interactable and interactable == null: interactable = area
 
 func _on_interaction_area_area_exited(area: Area2D) -> void:
-	if interactable: interactable = null
+	if area is Interactable and interactable: interactable = null
