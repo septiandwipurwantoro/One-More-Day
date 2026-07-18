@@ -1,11 +1,14 @@
 extends CharacterBody2D
+class_name Player
 
 @export var max_speed: float = 250.0
 @export var acceleration: float = 2000.0
 @export var friction: float = 2500.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var interaction_root: Node2D = $InteractionRoot
 
+var interactable: Interactable
 var facing_direction := Vector2.DOWN
 
 func _physics_process(delta: float) -> void:
@@ -19,6 +22,10 @@ func _physics_process(delta: float) -> void:
 
 	_update_face_direction(input_dir)
 	move_and_slide()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact"):
+		if interactable: interactable.interact(self)
 
 func _update_face_direction(direction: Vector2) -> void:
 	if direction == Vector2.ZERO:
@@ -46,6 +53,8 @@ func _update_face_direction(direction: Vector2) -> void:
 		Vector2.DOWN:
 			facing_direction = Vector2.DOWN
 			sprite.play("run_down")
+			
+	interaction_root.rotation = facing_direction.angle()
 
 func _get_input_direction() -> Vector2:
 	var raw := Vector2(
@@ -60,3 +69,9 @@ func _get_input_direction() -> Vector2:
 		return Vector2(sign(raw.x), 0)
 	else:
 		return Vector2(0, sign(raw.y))
+
+func _on_interaction_area_area_entered(area: Area2D) -> void:
+	if area is Interactable: interactable = area
+
+func _on_interaction_area_area_exited(area: Area2D) -> void:
+	if interactable: interactable = null

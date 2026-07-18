@@ -250,6 +250,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u656f"]
+
 [node name="Player" type="CharacterBody2D" unique_id=536877065]
 scale = Vector2(3, 3)
 motion_mode = 1
@@ -263,3 +265,14 @@ shape = SubResource("RectangleShape2D_356b5")
 sprite_frames = SubResource("SpriteFrames_356b5")
 animation = &"idle_up"
 autoplay = "idle_down"
+
+[node name="InteractionRoot" type="Node2D" parent="." unique_id=1607339743]
+
+[node name="InteractionArea" type="Area2D" parent="InteractionRoot" unique_id=2122577543]
+position = Vector2(24, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionRoot/InteractionArea" unique_id=61334018]
+shape = SubResource("RectangleShape2D_u656f")
+
+[connection signal="area_entered" from="InteractionRoot/InteractionArea" to="." method="_on_interaction_area_area_entered"]
+[connection signal="area_exited" from="InteractionRoot/InteractionArea" to="." method="_on_interaction_area_area_exited"]
