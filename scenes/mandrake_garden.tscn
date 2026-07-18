@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://de6g8qaprslsx" path="res://scenes/player.tscn" id="1_6sg4v"]
 [ext_resource type="Texture2D" uid="uid://bvoyn3ag1722g" path="res://assets/sprites/mandrake_gargen.png" id="1_6x6ry"]
 [ext_resource type="PackedScene" uid="uid://bqkuyc1bvkbg2" path="res://scenes/mandrake_field.tscn" id="2_7dv7v"]
+[ext_resource type="Script" uid="uid://dv3omnqwtahm2" path="res://scripts/shop_area.gd" id="3_6x6ry"]
+[ext_resource type="Resource" uid="uid://8nb5r4ky8qul" path="res://dialogues/test.dialogue" id="4_bg3bc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_356b5"]
 size = Vector2(20, 534)
@@ -38,6 +40,7 @@ size = Vector2(20, 95)
 size = Vector2(20, 248.7463)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u656f"]
+size = Vector2(240, 120)
 
 [node name="MandrakeGarden" type="Node2D" unique_id=1938493377]
 
@@ -158,13 +161,16 @@ position = Vector2(352, 625)
 [node name="MandrakeField4" parent="." unique_id=1498133910 instance=ExtResource("2_7dv7v")]
 position = Vector2(486, 626)
 
-[node name="Shop" type="Area2D" parent="." unique_id=1467219705]
+[node name="ShopArea" type="Area2D" parent="." unique_id=1467219705]
+position = Vector2(651, -602)
+script = ExtResource("3_6x6ry")
+shop_dialogue = ExtResource("4_bg3bc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Shop" unique_id=1207165858]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShopArea" unique_id=1207165858]
 shape = SubResource("RectangleShape2D_u656f")
 
 [node name="Player" parent="." unique_id=536877065 instance=ExtResource("1_6sg4v")]
-position = Vector2(333, 241)
+position = Vector2(659, -114)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=165029062]
 scale = Vector2(0.33333334, 0.33333334)
