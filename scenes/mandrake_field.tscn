@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bqkuyc1bvkbg2"]
 
 [ext_resource type="Texture2D" uid="uid://dwxl8dkqpojx4" path="res://icon.svg" id="1_tngh8"]
-[ext_resource type="Script" uid="uid://1eje76w3hbup" path="res://scripts/analysis_area.gd" id="2_etgx3"]
+[ext_resource type="Script" uid="uid://1eje76w3hbup" path="res://scripts/inspect_area.gd" id="2_etgx3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_356b5"]
 size = Vector2(64, 64)
@@ -12,8 +12,8 @@ size = Vector2(64, 64)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_tngh8")
 
-[node name="AnalysisArea" type="Area2D" parent="." unique_id=717035307]
+[node name="InspectArea" type="Area2D" parent="." unique_id=717035307]
 script = ExtResource("2_etgx3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnalysisArea" unique_id=2071763618]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InspectArea" unique_id=2071763618]
 shape = SubResource("RectangleShape2D_356b5")

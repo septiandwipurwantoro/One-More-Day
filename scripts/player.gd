@@ -9,7 +9,11 @@ class_name Player
 @onready var interaction_root: Node2D = $InteractionRoot
 
 var interactable: Interactable
-var facing_direction := Vector2.DOWN
+var facing_direction: Vector2
+
+func _ready() -> void:
+	facing_direction = Vector2.DOWN
+	_update_face_direction(facing_direction)
 
 func _physics_process(delta: float) -> void:
 	var input_dir := _get_input_direction()

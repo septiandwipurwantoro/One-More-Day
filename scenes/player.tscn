@@ -263,8 +263,8 @@ shape = SubResource("RectangleShape2D_356b5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=287827305]
 sprite_frames = SubResource("SpriteFrames_356b5")
-animation = &"idle_up"
-autoplay = "idle_down"
+animation = &"idle_side"
+autoplay = "idle_side"
 
 [node name="InteractionRoot" type="Node2D" parent="." unique_id=1607339743]
 

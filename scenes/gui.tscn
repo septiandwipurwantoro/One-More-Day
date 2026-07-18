@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://ci14ioryhopm"]
+
+[ext_resource type="Theme" uid="uid://cb7dow4a1dv75" path="res://assets/main_theme.tres" id="1_efmwq"]
+[ext_resource type="Texture2D" uid="uid://dwxl8dkqpojx4" path="res://icon.svg" id="2_mfius"]
+[ext_resource type="Script" uid="uid://ca1kpk5b26li" path="res://scripts/gui.gd" id="2_ynd5l"]
+
+[node name="GUI" type="Control" unique_id=391309277]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_efmwq")
+script = ExtResource("2_ynd5l")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1402254953]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 40.0
+offset_right = 169.0
+offset_bottom = 134.0
+
+[node name="GoldLabel" type="Label" parent="VBoxContainer2" unique_id=648873518]
+layout_mode = 2
+text = "G 1000"
+
+[node name="DateLabel" type="Label" parent="VBoxContainer2" unique_id=77948422]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1/1/XX27"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=965225746]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 40.0
+offset_right = 240.0
+offset_bottom = 120.0
+grow_horizontal = 2
+theme_override_constants/separation = 16
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer" unique_id=2074601796]
+custom_minimum_size = Vector2(480, 40)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1633097220]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer" unique_id=1218123268]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/HBoxContainer" unique_id=827392029]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/HBoxContainer" unique_id=2056308102]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ColorRect4" type="ColorRect" parent="VBoxContainer/HBoxContainer" unique_id=1979733885]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+color = Color(0.37036464, 0.37036443, 0.37036446, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="VBoxContainer/HBoxContainer" unique_id=1404543510]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+color = Color(0.37036464, 0.37036443, 0.37036446, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="VBoxContainer/HBoxContainer" unique_id=296559027]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+color = Color(0.37036464, 0.37036443, 0.37036446, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="VBoxContainer/HBoxContainer" unique_id=1643204596]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+color = Color(0.37036464, 0.37036443, 0.37036446, 1)
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1034389568]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_top = 40.0
+offset_right = -64.0
+offset_bottom = 104.0
+grow_horizontal = 0
+texture_normal = ExtResource("2_mfius")
+ignore_texture_size = true
+stretch_mode = 0
