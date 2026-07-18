@@ -4,32 +4,27 @@
 [ext_resource type="Texture2D" uid="uid://dwxl8dkqpojx4" path="res://icon.svg" id="2_41xxf"]
 [ext_resource type="Script" uid="uid://bix104wefq2o7" path="res://scripts/mandrake_status_panel.gd" id="2_50of0"]
 
-[node name="MandrakeStatusPanel" type="Control" unique_id=1397978618]
-layout_mode = 3
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kbnq"]
+content_margin_left = 48.0
+content_margin_top = 48.0
+content_margin_right = 48.0
+content_margin_bottom = 48.0
+bg_color = Color(0, 0, 0, 0.1882353)
+
+[node name="MandrakeStatusPanel" type="PanelContainer" unique_id=506208413]
+custom_minimum_size = Vector2(1200, 640)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_4xd40")
+theme_override_styles/panel = SubResource("StyleBoxFlat_0kbnq")
 script = ExtResource("2_50of0")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=2105506460]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.3019608)
-
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1818992161]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+theme_override_constants/separation = 48
 
 [node name="Mandrake" type="TextureRect" parent="HBoxContainer" unique_id=1255599830]
 layout_mode = 2
@@ -62,17 +57,31 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "The record of the mandrake here"
 
-[node name="Actions" type="VBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=97617312]
+[node name="ActionButtons" type="VBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=97617312]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/Actions" unique_id=1502715243]
+[node name="PlantButton" type="Button" parent="HBoxContainer/VBoxContainer/ActionButtons" unique_id=122548003]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Plant"
+
+[node name="WaterButton" type="Button" parent="HBoxContainer/VBoxContainer/ActionButtons" unique_id=1502715243]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Water"
 
-[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer/Actions" unique_id=130183384]
+[node name="UsePotionButton" type="Button" parent="HBoxContainer/VBoxContainer/ActionButtons" unique_id=130183384]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Give Potion"
 
-[node name="Button3" type="Button" parent="HBoxContainer/VBoxContainer/Actions" unique_id=1316962634]
+[node name="HarvestButton" type="Button" parent="HBoxContainer/VBoxContainer/ActionButtons" unique_id=1758884023]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Harvest"
+
+[node name="LeaveButton" type="Button" parent="HBoxContainer/VBoxContainer/ActionButtons" unique_id=1316962634]
 layout_mode = 2
 text = "Leave"
+
+[connection signal="button_up" from="HBoxContainer/VBoxContainer/ActionButtons/LeaveButton" to="." method="_on_leave_button_button_up"]

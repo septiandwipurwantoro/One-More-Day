@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://de6g8qaprslsx" path="res://scenes/player.tscn" id="1_6sg4v"]
 [ext_resource type="Texture2D" uid="uid://bvoyn3ag1722g" path="res://assets/sprites/mandrake_gargen.png" id="1_6x6ry"]
 [ext_resource type="PackedScene" uid="uid://bqkuyc1bvkbg2" path="res://scenes/mandrake_field.tscn" id="2_7dv7v"]
-[ext_resource type="PackedScene" uid="uid://c8hu78y332pdh" path="res://scenes/ui_manager.tscn" id="3_fcmd2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_356b5"]
 size = Vector2(20, 534)
@@ -37,6 +36,8 @@ size = Vector2(20, 95)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lng5s"]
 size = Vector2(20, 248.7463)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u656f"]
 
 [node name="MandrakeGarden" type="Node2D" unique_id=1938493377]
 
@@ -146,21 +147,24 @@ scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_lng5s")
 
 [node name="MandrakeField" parent="." unique_id=1204625407 instance=ExtResource("2_7dv7v")]
-visible = false
-position = Vector2(564, 228)
+position = Vector2(345, 479)
 
 [node name="MandrakeField2" parent="." unique_id=53688692 instance=ExtResource("2_7dv7v")]
-visible = false
-position = Vector2(634, 461)
+position = Vector2(493, 477)
 
 [node name="MandrakeField3" parent="." unique_id=833351129 instance=ExtResource("2_7dv7v")]
-visible = false
-position = Vector2(464, 447)
+position = Vector2(352, 625)
+
+[node name="MandrakeField4" parent="." unique_id=1498133910 instance=ExtResource("2_7dv7v")]
+position = Vector2(486, 626)
+
+[node name="Shop" type="Area2D" parent="." unique_id=1467219705]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shop" unique_id=1207165858]
+shape = SubResource("RectangleShape2D_u656f")
 
 [node name="Player" parent="." unique_id=536877065 instance=ExtResource("1_6sg4v")]
 position = Vector2(333, 241)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=165029062]
 scale = Vector2(0.33333334, 0.33333334)
-
-[node name="UIManager" parent="." unique_id=275313636 instance=ExtResource("3_fcmd2")]

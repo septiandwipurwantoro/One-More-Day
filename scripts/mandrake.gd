@@ -1,5 +1,5 @@
 extends Resource
-class_name MandrakeData
+class_name Mandrake
 
 signal maturity_changed(new_state: Maturity)
 signal mood_changed(new_mood: Mood)

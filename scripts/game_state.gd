@@ -3,6 +3,9 @@ extends Node
 var day_counter := 1
 var month_counter := 1
 
+var harvesting := false
+var mandrake_fields: Dictionary[MandrakeField, Mandrake]
+
 func turn_next_day() -> void:
 	day_counter += 1
 	if day_counter <= 30: return
@@ -13,6 +16,13 @@ func turn_next_day() -> void:
 	
 	month_counter = 1
 		
-
 func get_current_date() -> String:
 	return "%d / %d" % [day_counter, month_counter]
+
+func harvest(harvested_mandrake: Mandrake) -> void:
+	harvesting = true
+	for mandrake_field in mandrake_fields:
+		var mandrake: Mandrake = mandrake_fields[mandrake_field]
+		if mandrake == harvested_mandrake: continue
+		if mandrake_field is MandrakeField:
+			pass
