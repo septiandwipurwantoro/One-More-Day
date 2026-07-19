@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://4shuotkt6wc"]
+
+[ext_resource type="Script" uid="uid://dvduqtj37v81u" path="res://scripts/mandrake_record.gd" id="1_f6sqe"]
+
+[node name="MandrakeRecord" type="HBoxContainer" unique_id=973775373]
+script = ExtResource("1_f6sqe")
+
+[node name="DateLabel" type="RichTextLabel" parent="." unique_id=1880482962]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "1 / 1"
+fit_content = true
+
+[node name="RecordLabel" type="RichTextLabel" parent="." unique_id=1729898168]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "The record of the mandrake here"
+fit_content = true

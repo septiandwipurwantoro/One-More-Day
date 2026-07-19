@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
+@export var entry_point: Node2D
 @export var max_speed: float = 300.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -13,7 +14,7 @@ func _ready() -> void:
 	facing_direction = Vector2.RIGHT
 	_update_face_direction(facing_direction)
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var input_dir := _get_input_direction()
 
 	if input_dir != Vector2.ZERO:
@@ -22,7 +23,7 @@ func _physics_process(_delta: float) -> void:
 		velocity = Vector2.ZERO
 
 	_update_face_direction(input_dir)
-	move_and_slide()
+	move_and_collide(velocity * delta)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
@@ -45,6 +46,8 @@ func _update_face_direction(direction: Vector2) -> void:
 	interaction_root.rotation = facing_direction.angle()
 
 func _get_input_direction() -> Vector2: 
+	if not GameState.input_enable: return Vector2.ZERO
+	
 	var raw := Vector2( Input.get_axis("move_left", "move_right"), 
 	Input.get_axis("move_up", "move_down") ) 
 	if raw == Vector2.ZERO: return Vector2.ZERO 
@@ -56,3 +59,6 @@ func _on_interaction_area_area_entered(area: Area2D) -> void:
 
 func _on_interaction_area_area_exited(area: Area2D) -> void:
 	if area is Interactable and interactable: interactable = null
+
+func advance_day() -> void:
+	global_position = entry_point.global_position

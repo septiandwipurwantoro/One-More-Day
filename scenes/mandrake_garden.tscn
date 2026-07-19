@@ -46,6 +46,17 @@ size = Vector2(240, 120)
 
 [node name="Environment" type="Node2D" parent="." unique_id=1489881899]
 
+[node name="Background" type="CanvasLayer" parent="Environment" unique_id=669743089]
+layer = -100
+
+[node name="ColorRect" type="ColorRect" parent="Environment/Background" unique_id=473776591]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="Garden" type="Sprite2D" parent="Environment" unique_id=346203768]
 position = Vector2(640, 0)
 scale = Vector2(5, 5)
@@ -169,8 +180,12 @@ shop_dialogue = ExtResource("4_bg3bc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopArea" unique_id=1207165858]
 shape = SubResource("RectangleShape2D_u656f")
 
-[node name="Player" parent="." unique_id=536877065 instance=ExtResource("1_6sg4v")]
-position = Vector2(659, -114)
+[node name="Player" parent="." unique_id=536877065 node_paths=PackedStringArray("entry_point") instance=ExtResource("1_6sg4v")]
+position = Vector2(615, 444)
+entry_point = NodePath("../EntryPoint")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=165029062]
 scale = Vector2(0.33333334, 0.33333334)
+
+[node name="EntryPoint" type="Node2D" parent="." unique_id=880089561]
+position = Vector2(640, 1133)

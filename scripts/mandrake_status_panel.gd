@@ -1,22 +1,41 @@
 extends Control
 class_name MandrakeStatusPanel
 
+@export var mandrake_record_scene: PackedScene
+
 @onready var plant_button: Button = %PlantButton
 @onready var water_button: Button = %WaterButton
 @onready var use_potion_button: Button = %UsePotionButton
 @onready var harvest_button: Button = %HarvestButton
 @onready var leave_button: Button = %LeaveButton
 
+@onready var mandrake_records: VBoxContainer = %MandrakeRecords
+
 var _current_field: MandrakeField
 
-func show_panel(field: MandrakeField) -> void:
+func setup_panel(field: MandrakeField) -> void:
 	_current_field = field
 	_setup_records()
 	_refresh_buttons()
-	show()
 
 func _setup_records() -> void:
-	pass
+	_remove_all_records()
+	var mandrake: Mandrake = _current_field.planted_mandrake
+	if mandrake:
+		var records := mandrake.records
+		if records:
+			for record in records:
+				var mandrake_record: MandrakeRecord = mandrake_record_scene.instantiate()
+				mandrake_records.add_child(mandrake_record)
+				mandrake_record.setup(record)
+			
+			return
+		
+		
+		
+func _remove_all_records() -> void:
+	for record in mandrake_records.get_children():
+		record.queue_free() 
 
 func _refresh_buttons() -> void:
 	var mandrake: Mandrake = _current_field.planted_mandrake
@@ -24,8 +43,9 @@ func _refresh_buttons() -> void:
 	_hide_all_buttons()
 
 	if mandrake:
-		water_button.show()
-		use_potion_button.show()
+		if not mandrake.cared_today:
+			water_button.show()
+			use_potion_button.show()
 
 		if mandrake.current_state == Mandrake.Maturity.MATURE:
 			harvest_button.show()
@@ -62,4 +82,4 @@ func _on_harvest_button_button_up() -> void:
 
 func _on_leave_button_button_up() -> void:
 	_current_field = null
-	hide()
+	UIManager.leave_mandrake_status()

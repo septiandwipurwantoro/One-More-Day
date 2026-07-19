@@ -9,6 +9,6 @@ bg_color = Color(0, 0, 0, 1)
 
 [resource]
 Button/font_sizes/font_size = 24
-Label/font_sizes/font_size = 32
+Label/font_sizes/font_size = 28
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_64js0")
 RichTextLabel/font_sizes/normal_font_size = 18

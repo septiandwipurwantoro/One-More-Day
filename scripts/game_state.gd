@@ -1,12 +1,23 @@
 extends Node
 
+var input_enable := true
+
 var day_counter := 1
 var month_counter := 1
 
 var harvesting := false
 var mandrake_fields: Dictionary[MandrakeField, Mandrake]
 
-func turn_next_day() -> void:
+func advance_day() -> void:
+	var today_date = get_current_date()
+	_turn_next_day()
+	
+	UIManager.close_the_day(today_date, get_current_date())
+	
+	await UIManager.day_closed
+	get_tree().current_scene.propagate_call("advance_day")
+
+func _turn_next_day() -> void:
 	day_counter += 1
 	if day_counter <= 30: return
 	
