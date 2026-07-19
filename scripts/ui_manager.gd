@@ -14,11 +14,13 @@ var ready_next_day := false
 func show_mandrake_status(mandrake: MandrakeField) -> void:
 	GameState.input_enable = false
 	mandrake_status_panel.setup_panel(mandrake)
+	
 	gui.hide()
 	mandrake_status_panel.show()
 
 func leave_mandrake_status() -> void:
 	GameState.input_enable = true
+	
 	mandrake_status_panel.hide()
 	gui.show()
 	

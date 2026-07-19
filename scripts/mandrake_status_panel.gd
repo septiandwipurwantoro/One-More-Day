@@ -9,13 +9,18 @@ class_name MandrakeStatusPanel
 @onready var harvest_button: Button = %HarvestButton
 @onready var leave_button: Button = %LeaveButton
 
+@onready var mandrake_sprite: AnimatedSprite2D = %MandrakeSprite
+
+@onready var records_scroller: ScrollContainer = %RecordsScroller
 @onready var mandrake_records: VBoxContainer = %MandrakeRecords
 
 var _current_field: MandrakeField
 
 func setup_panel(field: MandrakeField) -> void:
 	_current_field = field
+	
 	_setup_records()
+	_setup_mandrake_maturity()
 	_refresh_buttons()
 
 func _setup_records() -> void:
@@ -24,14 +29,16 @@ func _setup_records() -> void:
 	if mandrake:
 		var records := mandrake.records
 		if records:
+			var last_racord: MandrakeRecord
 			for record in records:
 				var mandrake_record: MandrakeRecord = mandrake_record_scene.instantiate()
 				mandrake_records.add_child(mandrake_record)
 				mandrake_record.setup(record)
-			
+				last_racord = mandrake_record
+				
+			await get_tree().process_frame
+			records_scroller.ensure_control_visible(last_racord)
 			return
-		
-		
 		
 func _remove_all_records() -> void:
 	for record in mandrake_records.get_children():
@@ -59,26 +66,47 @@ func _hide_all_buttons() -> void:
 	water_button.hide()
 	use_potion_button.hide()
 	harvest_button.hide()
-
+	
+func _setup_mandrake_maturity() -> void:
+	var mandrake: Mandrake = _current_field.planted_mandrake
+	if mandrake:
+		match mandrake.current_state:
+			Mandrake.Maturity.SEED:
+				mandrake_sprite.play("seed")
+			Mandrake.Maturity.SPROUT:
+				mandrake_sprite.play("sprout")
+			Mandrake.Maturity.YOUNG:
+				mandrake_sprite.play("young")
+			Mandrake.Maturity.MATURE:
+				mandrake_sprite.play("mature")
+		
+		return
+	
+	mandrake_sprite.play("empty")
+			
 func _on_plant_button_button_up() -> void:
 	_current_field.plant()
-	_refresh_buttons()
 	_setup_records()
+	_setup_mandrake_maturity()
+	_refresh_buttons()
 
 func _on_water_button_button_up() -> void:
 	_current_field.planted_mandrake.water_mandrake()
-	_refresh_buttons()
 	_setup_records()
+	_setup_mandrake_maturity()
+	_refresh_buttons()
 
 func _on_use_potion_button_button_up() -> void:
 	_current_field.planted_mandrake.potion_mandrake()
-	_refresh_buttons()
 	_setup_records()
+	_setup_mandrake_maturity()
+	_refresh_buttons()
 
 func _on_harvest_button_button_up() -> void:
 	GameState.harvest(_current_field.planted_mandrake)
-	_refresh_buttons()
 	_setup_records()
+	_setup_mandrake_maturity()
+	_refresh_buttons()
 
 func _on_leave_button_button_up() -> void:
 	_current_field = null

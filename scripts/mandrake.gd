@@ -6,6 +6,7 @@ signal mood_changed(new_mood: Mood)
 signal record_added(record: Dictionary)
 
 enum Maturity {
+	NONE,
 	SEED,
 	SPROUT,
 	YOUNG,
@@ -69,16 +70,34 @@ const ROOT_HEALTH_PHRASES := {
 	"good": [
 		"Its roots are healthy, and its breath is steady.",
 		"Its roots are strong, and its breathing is calm.",
+		"Its roots are firmly anchored in the soil.",
+		"It breathes with quiet confidence.",
+		"Its roots spread deep and without blemish.",
+		"The roots pulse with quiet vitality.",
+		"It shows no sign of physical distress.",
+		"Its breathing is slow and even.",
 	],
 	
 	"okay": [
 		"Its roots are fairly healthy, though a little fragile at the tips.",
 		"Its breathing falters slightly, but it still endures.",
+		"A few roots seem brittle, but most remain intact.",
+		"It breathes unevenly from time to time.",
+		"Its roots have minor damage, though nothing severe.",
+		"It appears somewhat tired, but still stable.",
+		"Its breathing is a little shallow.",
+		"The roots seem to be recovering on their own.",
 	],
 	
 	"weak": [
 		"Its roots are frail, and its breathing comes in strained gasps.",
 		"Its roots have begun to wither, and its breath grows faint.",
+		"Its roots are barely holding together.",
+		"It struggles to draw each breath.",
+		"Much of its root system has decayed.",
+		"Its breathing is weak and irregular.",
+		"It looks as though it could collapse at any moment.",
+		"The roots are dry, brittle, and close to failing.",
 	],
 }
 
@@ -86,16 +105,34 @@ const MOOD_STATUS_PHRASES := {
 	Mood.GOOD: [
 		"It seems calm and composed.",
 		"It looks at peace.",
+		"It sways gently, without resistance.",
+		"It appears content with its surroundings.",
+		"It remains remarkably relaxed.",
+		"It barely reacts to your presence.",
+		"Its movements are slow and gentle.",
+		"It seems unusually cooperative.",
 	],
 	
 	Mood.NEUTRAL: [
 		"It seems stable.",
 		"It appears ordinary.",
+		"It quietly watches its surroundings.",
+		"It shows little emotion.",
+		"It neither welcomes nor rejects your presence.",
+		"It appears alert, but unconcerned.",
+		"It waits without making a sound.",
+		"Its behavior is difficult to read.",
 	],
 	
 	Mood.BAD: [
 		"It seems restless and easily agitated.",
 		"It looks angry, struggling ever so slightly.",
+		"It twists uneasily beneath the soil.",
+		"It recoils at the slightest movement.",
+		"It trembles with visible irritation.",
+		"It watches you with quiet hostility.",
+		"Its breathing grows sharper as you approach.",
+		"It seems ready to lash out at any moment.",
 	],
 }
 
@@ -131,7 +168,7 @@ var profit_penalty := 0.0
 
 #region lifecycle
 func create() -> void:
-	current_state = Maturity.SEED
+	current_state = Maturity.NONE
 	cared_today = false
 	weight = BASE_WEIGHT
 	current_color = Color.ORANGE
@@ -144,6 +181,7 @@ func create() -> void:
 	scream_power = BASE_SCREAM_POWER + root_strength
 	profit_penalty = 0.0
 	records.clear()
+	_update_maturity()
 	add_record("Mandrake is planted")
 
 func advance_day() -> void:
@@ -200,6 +238,7 @@ func _update_maturity() -> void:
 	if new_state != current_state:
 		current_state = new_state
 		maturity_changed.emit(current_state)
+		if new_state == Maturity.SEED: return
 		add_record("Mandrake grew into %s stage" % Maturity.keys()[current_state])
 
 func _update_mood() -> void:
