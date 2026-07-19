@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cc7tqwthd0xad" path="res://scripts/ui_manager.gd" id="1_reske"]
 [ext_resource type="PackedScene" uid="uid://ci14ioryhopm" path="res://scenes/gui.tscn" id="2_j2mt3"]
 [ext_resource type="PackedScene" uid="uid://7r3synusev8c" path="res://scenes/mandrake_status_panel.tscn" id="3_ixhu3"]
+[ext_resource type="Theme" uid="uid://cb7dow4a1dv75" path="res://assets/main_theme.tres" id="4_j2mt3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_356b5"]
 font_size = 40
@@ -11,7 +12,7 @@ font_size = 40
 font_size = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_ixhu3"]
-font_size = 24
+font_color = Color(0.74138474, 0.7413847, 0.74138457, 1)
 
 [node name="UIManager" type="CanvasLayer" unique_id=275313636]
 script = ExtResource("1_reske")
@@ -29,17 +30,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="BlackOverlay" type="ColorRect" parent="NextDayComponent" unique_id=618659169]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
+theme = ExtResource("4_j2mt3")
 
 [node name="DateLabel" type="Label" parent="NextDayComponent" unique_id=1074742435]
 layout_mode = 1
@@ -90,3 +81,25 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Click Anywhere to Continue"
 label_settings = SubResource("LabelSettings_ixhu3")
+
+[node name="Notification" type="PanelContainer" parent="." unique_id=509923948]
+offset_left = 1307.0
+offset_top = 236.0
+offset_right = 1491.0
+offset_bottom = 326.0
+theme = ExtResource("4_j2mt3")
+
+[node name="NotificationLabel" type="RichTextLabel" parent="Notification" unique_id=1377798724]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+fit_content = true
+
+[node name="BlackOverlay" type="ColorRect" parent="." unique_id=618659169]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

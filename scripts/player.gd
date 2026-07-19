@@ -9,12 +9,19 @@ class_name Player
 
 var interactable: Interactable
 var facing_direction: Vector2
+var in_interaction := false
+
+var health := 1000.0
 
 func _ready() -> void:
 	facing_direction = Vector2.RIGHT
 	_update_face_direction(facing_direction)
+	
+	GameState.day_advanced.connect(_on_day_advanced)
 
 func _physics_process(delta: float) -> void:
+	if in_interaction: return
+	
 	var input_dir := _get_input_direction()
 
 	if input_dir != Vector2.ZERO:
@@ -54,11 +61,25 @@ func _get_input_direction() -> Vector2:
 	if absf(raw.x) > absf(raw.y): return Vector2(sign(raw.x), 0) 
 	else: return Vector2(0, sign(raw.y))
 
+func play_interaction() -> void:
+	in_interaction = true
+	sprite.play("interact")
+	
+	await sprite.animation_finished
+	in_interaction = false
+
+func play_watering() -> void:
+	in_interaction = true
+	sprite.play("watering")
+	
+	await sprite.animation_finished
+	in_interaction = false
+
 func _on_interaction_area_area_entered(area: Area2D) -> void:
 	if area is Interactable and interactable == null: interactable = area
 
 func _on_interaction_area_area_exited(area: Area2D) -> void:
 	if area is Interactable and interactable: interactable = null
 
-func advance_day() -> void:
+func _on_day_advanced() -> void:
 	global_position = entry_point.global_position

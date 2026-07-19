@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 DialogueManager="*uid://c3rodes2l3gxb"
 UIManager="*uid://c8hu78y332pdh"
 GameState="*uid://b8wjrwug2kv2p"
+Inventory="*uid://cnenusi5yy6m0"
+AudioManager="*uid://dnlyke6kfdjj"
 
 [display]
 

@@ -28,7 +28,7 @@ const GROWTH_THRESHOLDS := {
 	Maturity.MATURE: 100.0,
 }
 
-const GROWTH_RATE_RANGE := Vector2(0.7, 1.3)
+const GROWTH_RATE_RANGE := Vector2(110.8, 111.5)
 const ROOT_STRENGTH_RANGE := Vector2(0.8, 1.4)
 
 const DAILY_BASE_GROWTH := 3.0
@@ -46,8 +46,8 @@ const AGITATION_GOOD_THRESHOLD := 0.25
 const POTION_PROFIT_PENALTY := 0.12
 const MAX_PROFIT_PENALTY := 0.6
 
-const BASE_WEIGHT := 5.0
-const WEIGHT_GROWTH_SCALE := 1.75
+const BASE_WEIGHT := 0.5
+const WEIGHT_GROWTH_SCALE := 0.1
 const MAX_WEIGHT_MULTIPLIER := 2.0
 
 const POWER_GROWTH_SCALE := 0.02
@@ -256,26 +256,30 @@ func _update_mood() -> void:
 
 #region actions
 func water_mandrake() -> void:
+	Inventory.use_water()
+	
 	growth += WATER_BONUS_GROWTH * growth_rate
 	health = clampf(health + WATER_HEALTH_RECOVERY, 0.0, 1.0)
 	cared_today = true
 	
+	add_record("Mandrake was watered")
 	_update_maturity()
 	_recalculate_derived_stats()
 	_update_mood()
-	add_record("Mandrake was watered")
 
 func potion_mandrake() -> void:
+	Inventory.use_potion()
+	
 	growth += POTION_BONUS_GROWTH * growth_rate
 	agitation = clampf(agitation - POTION_CALM_AMOUNT, 0.0, 1.0)
 	profit_penalty = clampf(profit_penalty + POTION_PROFIT_PENALTY, 0.0, MAX_PROFIT_PENALTY)
 	cared_today = true
 	
+	add_record("Mandrake was given a potion")
 	adjust_to_near_random_color()
 	_update_maturity()
 	_recalculate_derived_stats()
 	_update_mood()
-	add_record("Mandrake was given a potion")
 
 func adjust_to_near_random_color() -> void:
 	var h := current_color.h + randf_range(-COLOR_VARIANCE, COLOR_VARIANCE)

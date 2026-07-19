@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bdoxvqsxrve35"]
+
+[ext_resource type="Texture2D" uid="uid://dfsbi8ognq7wn" path="res://assets/sprites/mandrake.png" id="1_x8jou"]
+[ext_resource type="Script" uid="uid://dpp38j0ucekx3" path="res://scripts/pulled_mandrake.gd" id="2_k7dla"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob3iw"]
+atlas = ExtResource("1_x8jou")
+region = Rect2(0, 0, 126, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcglo"]
+atlas = ExtResource("1_x8jou")
+region = Rect2(126, 0, 126, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t1jr"]
+atlas = ExtResource("1_x8jou")
+region = Rect2(252, 0, 126, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8jou"]
+atlas = ExtResource("1_x8jou")
+region = Rect2(378, 0, 126, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7dla"]
+atlas = ExtResource("1_x8jou")
+region = Rect2(0, 119, 126, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwg82"]
+atlas = ExtResource("1_x8jou")
+region = Rect2(126, 119, 126, 119)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_356b5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob3iw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcglo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3t1jr")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8jou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7dla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwg82")
+}],
+"loop": 0,
+"name": &"scream",
+"speed": 5.0
+}]
+
+[node name="PulledMandrake" type="AnimatedSprite2D" unique_id=1502378719]
+sprite_frames = SubResource("SpriteFrames_356b5")
+animation = &"scream"
+autoplay = "idle"
+script = ExtResource("2_k7dla")

@@ -1,9 +1,14 @@
 extends Node2D
 class_name MandrakeField
 
+@export var pulled_mandrake_scene: PackedScene
+
 @onready var mandrake_sprite: AnimatedSprite2D = $MandrakeSprite
 
 var planted_mandrake: Mandrake
+
+func _ready() -> void:
+	GameState.day_advanced.connect(_on_day_advanced)
 
 func plant() -> void:
 	planted_mandrake = Mandrake.new()
@@ -12,15 +17,23 @@ func plant() -> void:
 	planted_mandrake.create()
 	GameState.mandrake_fields[self] = planted_mandrake
 	
+	mandrake_sprite.show()
 
 func scream() -> void:
 	pass
 
-func pull_out() -> void:
-	GameState.mandrake_fields.erase(planted_mandrake)
+func pull_out(harvester: Player) -> void:
+	GameState.mandrake_fields.erase(self)
 	planted_mandrake = null
+	mandrake_sprite.hide()
+	_spawn_pulled_mandrake(harvester)
 
-func advance_day() -> void:
+func _spawn_pulled_mandrake(harvester: Player) -> void:
+	var pulled_mandrake: PulledMandrake = pulled_mandrake_scene.instantiate()
+	pulled_mandrake.setup(harvester, planted_mandrake)
+	get_tree().current_scene.add_child(pulled_mandrake)
+
+func _on_day_advanced() -> void:
 	if planted_mandrake:
 		planted_mandrake.advance_day()
 

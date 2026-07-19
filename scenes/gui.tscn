@@ -71,28 +71,30 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.37036464, 0.37036443, 0.37036446, 1)
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1296879406]
+[node name="WaterContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1296879406]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer/HBoxContainer2" unique_id=1485728571]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer/WaterContainer" unique_id=1485728571]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.35686275, 0.28235295, 1, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/HBoxContainer/HBoxContainer2" unique_id=479318778]
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/HBoxContainer/WaterContainer" unique_id=479318778]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.35686275, 0.28235295, 1, 1)
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1823152061]
+[node name="PotionContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1823152061]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer/HBoxContainer3" unique_id=1745473717]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer/PotionContainer" unique_id=1745473717]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.7764706, 0.18431373, 0.18431373, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/HBoxContainer/HBoxContainer3" unique_id=1444872018]
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/HBoxContainer/PotionContainer" unique_id=1444872018]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.7764706, 0.18431373, 0.18431373, 1)
@@ -109,9 +111,10 @@ layout_mode = 2
 text = "G 1000"
 
 [node name="DateLabel" type="Label" parent="VBoxContainer2" unique_id=77948422]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Date 1/1"
+text = "Date 1 / 1"
 
 [node name="PauseButton" type="TextureButton" parent="." unique_id=1034389568]
 custom_minimum_size = Vector2(64, 64)
@@ -167,7 +170,8 @@ theme_override_constants/separation = 24
 
 [node name="Label" type="Label" parent="AdvanceDayConfimationPanel/VBoxContainer" unique_id=1113971540]
 layout_mode = 2
-text = "One More Day?"
+text = "End The Day?"
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="AdvanceDayConfimationPanel/VBoxContainer" unique_id=1874277578]
 layout_mode = 2

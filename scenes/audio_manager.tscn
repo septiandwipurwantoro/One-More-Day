@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dnlyke6kfdjj"]
+
+[ext_resource type="Script" uid="uid://w7mtfqdswgyl" path="res://scripts/audio_manager.gd" id="1_8qd8g"]
+[ext_resource type="AudioStream" uid="uid://choevdfwmrked" path="res://assets/audios/banger.mp3" id="2_liach"]
+
+[node name="AudioManager" type="Node" unique_id=1489916233]
+script = ExtResource("1_8qd8g")
+initial_bgm = ExtResource("2_liach")

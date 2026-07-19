@@ -7,9 +7,6 @@
 [ext_resource type="Resource" uid="uid://8nb5r4ky8qul" path="res://dialogues/test.dialogue" id="4_bg3bc"]
 [ext_resource type="Script" uid="uid://bhvxwq445wswp" path="res://scripts/water_area.gd" id="5_ngcy1"]
 [ext_resource type="Script" uid="uid://bd12ucoym3fa4" path="res://scripts/potion_area.gd" id="6_qorsj"]
-[ext_resource type="Texture2D" uid="uid://b20vr587aul8" path="res://assets/sprites/water.png" id="6_rupx6"]
-[ext_resource type="Script" uid="uid://dm2c4x4h2p0jp" path="res://scripts/floater.gd" id="7_rupx6"]
-[ext_resource type="Texture2D" uid="uid://b42h60ie72hvw" path="res://assets/sprites/potion.png" id="9_y2bh3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_356b5"]
 size = Vector2(20, 534)
@@ -200,12 +197,6 @@ rotation = 0.7853982
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_1ayma")
 
-[node name="Sprite2D" type="Sprite2D" parent="InteractableArea/WaterArea" unique_id=2070504930]
-position = Vector2(0, -63.999992)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("6_rupx6")
-script = ExtResource("7_rupx6")
-
 [node name="PotionArea" type="Area2D" parent="InteractableArea" unique_id=1380504428]
 position = Vector2(1065, 265)
 script = ExtResource("6_qorsj")
@@ -215,12 +206,6 @@ position = Vector2(-3.25, -3.2500305)
 rotation = -0.7853982
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_1ayma")
-
-[node name="Sprite2D" type="Sprite2D" parent="InteractableArea/PotionArea" unique_id=491236909]
-position = Vector2(0, -63.99997)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("9_y2bh3")
-script = ExtResource("7_rupx6")
 
 [node name="Player" parent="." unique_id=536877065 node_paths=PackedStringArray("entry_point") instance=ExtResource("1_6sg4v")]
 position = Vector2(615, 444)
