@@ -22,6 +22,7 @@ UIManager="*uid://c8hu78y332pdh"
 GameState="*uid://b8wjrwug2kv2p"
 Inventory="*uid://cnenusi5yy6m0"
 AudioManager="*uid://dnlyke6kfdjj"
+PlayerStats="*uid://cv2g88ujj8hp4"
 
 [display]
 
@@ -69,7 +70,7 @@ interact={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogues/test.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogues/the_keeper_idle.dialogue", "res://dialogues/selling_mandrakes.dialogue")
 
 [physics]
 

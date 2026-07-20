@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dyh4t0kpndaku"
+path="res://.godot/imported/the_keeper_idle.dialogue-bebc9dea631331f2cbb127e5dd7eeaa0.tres"
+
+[deps]
+
+source_file="res://dialogues/the_keeper_idle.dialogue"
+dest_files=["res://.godot/imported/the_keeper_idle.dialogue-bebc9dea631331f2cbb127e5dd7eeaa0.tres"]
+
+[params]
+
+defaults=true

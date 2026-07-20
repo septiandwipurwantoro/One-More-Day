@@ -1,0 +1,7 @@
+~ start
+The Keeper: The mandrake has grown.
+The Keeper: It will do.
+You have earned {{ Inventory.get_total_gold() }} Gold.
+do Inventory.sell_all_mandrakes()
+The Keeper: Take your reward.
+=> END

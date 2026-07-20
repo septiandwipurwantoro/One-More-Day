@@ -124,7 +124,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u656f"]
-size = Vector2(13, 16)
+size = Vector2(8, 8)
 
 [node name="Player" type="CharacterBody2D" unique_id=536877065]
 scale = Vector2(3, 3)
@@ -142,13 +142,14 @@ autoplay = "idle"
 frame = 7
 frame_progress = 1.0
 
-[node name="InteractionRoot" type="Node2D" parent="." unique_id=1607339743]
+[node name="InteractionArea" type="Area2D" parent="." unique_id=2122577543]
 
-[node name="InteractionArea" type="Area2D" parent="InteractionRoot" unique_id=2122577543]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionRoot/InteractionArea" unique_id=61334018]
-position = Vector2(6.5, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=61334018]
+position = Vector2(9.166666, 8.666667)
 shape = SubResource("RectangleShape2D_u656f")
 
-[connection signal="area_entered" from="InteractionRoot/InteractionArea" to="." method="_on_interaction_area_area_entered"]
-[connection signal="area_exited" from="InteractionRoot/InteractionArea" to="." method="_on_interaction_area_area_exited"]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=118870888]
+position_smoothing_enabled = true
+
+[connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_area_entered"]
+[connection signal="area_exited" from="InteractionArea" to="." method="_on_interaction_area_area_exited"]

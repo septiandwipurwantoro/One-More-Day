@@ -13,9 +13,9 @@ region = Rect2(0, 357, 126, 119)
 atlas = ExtResource("2_g7pt3")
 region = Rect2(378, 357, 126, 119)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g7pt3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uomen"]
 atlas = ExtResource("2_g7pt3")
-region = Rect2(504, 38, 126, 109)
+region = Rect2(504, 0, 126, 119)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x4jm7"]
 atlas = ExtResource("2_g7pt3")
@@ -48,9 +48,9 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g7pt3")
+"texture": SubResource("AtlasTexture_uomen")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"seed",
 "speed": 5.0
 }, {
@@ -86,9 +86,10 @@ pulled_mandrake_scene = ExtResource("2_8t6pg")
 
 [node name="MandrakeSprite" type="AnimatedSprite2D" parent="." unique_id=590783526]
 visible = false
-position = Vector2(0, -16)
+position = Vector2(-1, 6)
 sprite_frames = SubResource("SpriteFrames_356b5")
-animation = &"mature"
+animation = &"young"
+offset = Vector2(0, -34.25)
 
 [node name="InspectArea" type="Area2D" parent="." unique_id=717035307]
 script = ExtResource("2_etgx3")

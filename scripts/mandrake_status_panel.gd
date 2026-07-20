@@ -11,6 +11,7 @@ class_name MandrakeStatusPanel
 
 @onready var mandrake_sprite: AnimatedSprite2D = %MandrakeSprite
 
+@onready var mandrake_name_label: Label = %MandrakeNameLabel
 @onready var records_scroller: ScrollContainer = %RecordsScroller
 @onready var mandrake_records: VBoxContainer = %MandrakeRecords
 
@@ -21,9 +22,18 @@ func setup_panel(inspector: Player, field: MandrakeField) -> void:
 	current_inspector = inspector
 	current_field = field
 	
+	_setup_mandrake_name()
 	_setup_records()
 	_setup_mandrake_maturity()
 	_refresh_buttons()
+
+func _setup_mandrake_name() -> void:
+	var mandrake: Mandrake = current_field.planted_mandrake
+	if mandrake:
+		mandrake_name_label.text = mandrake.get_variant_name()
+		return
+		
+	mandrake_name_label.text = "Ready to Plant"
 
 func _setup_records() -> void:
 	_remove_all_records()
@@ -106,6 +116,7 @@ func _on_plant_button_button_up() -> void:
 	_disable_all_buttons()
 	await current_inspector.play_interaction()
 	current_field.plant()
+	_setup_mandrake_name()
 	_setup_records()
 	_setup_mandrake_maturity()
 	_refresh_buttons()
@@ -118,6 +129,7 @@ func _on_water_button_button_up() -> void:
 	_disable_all_buttons()
 	await current_inspector.play_watering()
 	current_field.planted_mandrake.water_mandrake()
+	_setup_mandrake_name()
 	_setup_records()
 	_setup_mandrake_maturity()
 	_refresh_buttons()
@@ -130,6 +142,7 @@ func _on_use_potion_button_button_up() -> void:
 	_disable_all_buttons()
 	await current_inspector.play_watering()
 	current_field.planted_mandrake.potion_mandrake()
+	_setup_mandrake_name()
 	_setup_records()
 	_setup_mandrake_maturity()
 	_refresh_buttons()
@@ -147,7 +160,11 @@ func _on_harvest_button_button_up() -> void:
 	await get_tree().create_timer(1.5).timeout
 	
 	mandrake_sprite.play("scream")
+	
+	var mandrake: Mandrake = current_field.planted_mandrake
+	
 	await mandrake_sprite.animation_finished
+	current_inspector.take_damage(mandrake.get_scream_damage())
 	await get_tree().create_timer(3.0).timeout
 
 	GameState.harvest(current_field.planted_mandrake, current_inspector)

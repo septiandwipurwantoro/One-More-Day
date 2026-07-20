@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://domnf7fsfu2wa"
+path="res://.godot/imported/selling_mandrakes.dialogue-c61b6b3c299309ba87fd722cb6d5764b.tres"
+
+[deps]
+
+source_file="res://dialogues/selling_mandrakes.dialogue"
+dest_files=["res://.godot/imported/selling_mandrakes.dialogue-c61b6b3c299309ba87fd722cb6d5764b.tres"]
+
+[params]
+
+defaults=true

@@ -15,10 +15,12 @@ func _inspect(inspector: Player) -> void:
 func _harvest(harvestor: Player) -> void:
 	if harvesting: return
 	
-	harvesting = true
 	if owner is MandrakeField:
 		var mandrake: Mandrake = owner.planted_mandrake
 		if mandrake:
+			if mandrake.current_state != mandrake.Maturity.MATURE: return
+			
+			harvesting = true
 			GameState.input_enable = false
 			
 			await harvestor.play_interaction()

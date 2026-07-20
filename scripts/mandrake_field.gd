@@ -23,19 +23,27 @@ func scream() -> void:
 	pass
 
 func pull_out(harvester: Player) -> void:
+	var pulled_mandrave = _spawn_pulled_mandrake(harvester)
+	
 	GameState.mandrake_fields.erase(self)
+	Inventory.harvested_mandrakes[pulled_mandrave] = planted_mandrake
+	
 	planted_mandrake = null
 	mandrake_sprite.hide()
-	_spawn_pulled_mandrake(harvester)
 
-func _spawn_pulled_mandrake(harvester: Player) -> void:
+func _spawn_pulled_mandrake(harvester: Player) -> PulledMandrake:
 	var pulled_mandrake: PulledMandrake = pulled_mandrake_scene.instantiate()
 	pulled_mandrake.setup(harvester, planted_mandrake)
 	get_tree().current_scene.add_child(pulled_mandrake)
+	
+	return pulled_mandrake
 
 func _on_day_advanced() -> void:
 	if planted_mandrake:
 		planted_mandrake.advance_day()
+	
+		print(Vector2.ONE * planted_mandrake.get_weight_multiplier())
+		mandrake_sprite.scale = Vector2.ONE * planted_mandrake.get_weight_multiplier() * 0.5
 
 func _on_maturity_changed(maturity: Mandrake.Maturity) -> void:
 	match maturity:

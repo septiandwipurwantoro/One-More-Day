@@ -4,6 +4,7 @@ class_name Mandrake
 signal maturity_changed(new_state: Maturity)
 signal mood_changed(new_mood: Mood)
 signal record_added(record: Dictionary)
+signal mandrake_attacked(damage: float)
 
 enum Maturity {
 	NONE,
@@ -28,27 +29,22 @@ const GROWTH_THRESHOLDS := {
 	Maturity.MATURE: 100.0,
 }
 
-const GROWTH_RATE_RANGE := Vector2(110.8, 111.5)
+const GROWTH_RATE_RANGE := Vector2(0.8, 1.5)
 const ROOT_STRENGTH_RANGE := Vector2(0.8, 1.4)
 
 const DAILY_BASE_GROWTH := 3.0
 const WATER_BONUS_GROWTH := 4.0
-const POTION_BONUS_GROWTH := 2.0
 
 const WATER_HEALTH_RECOVERY := 0.08
-const DAILY_HEALTH_DECAY := 0.06
+const DAILY_HEALTH_DECAY := 0.25
 
 const AGITATION_DAILY_GAIN := 0.04
 const POTION_CALM_AMOUNT := 0.5
 const AGITATION_BAD_THRESHOLD := 0.7
 const AGITATION_GOOD_THRESHOLD := 0.25
 
-const POTION_PROFIT_PENALTY := 0.12
-const MAX_PROFIT_PENALTY := 0.6
-
 const BASE_WEIGHT := 0.5
 const WEIGHT_GROWTH_SCALE := 0.1
-const MAX_WEIGHT_MULTIPLIER := 2.0
 
 const POWER_GROWTH_SCALE := 0.02
 const BASE_SCREAM_POWER := 0.5
@@ -162,7 +158,6 @@ var growth := 0.0
 var agitation := 0.0
 var mood: Mood = Mood.NEUTRAL
 var scream_power := 0.0
-var profit_penalty := 0.0
 
 #endregion
 
@@ -179,14 +174,14 @@ func create() -> void:
 	agitation = 0.0
 	mood = Mood.NEUTRAL
 	scream_power = BASE_SCREAM_POWER + root_strength
-	profit_penalty = 0.0
 	records.clear()
 	_update_maturity()
 	add_record("Mandrake is planted")
 
 func advance_day() -> void:
-	if not cared_today: health = clampf(health - DAILY_HEALTH_DECAY, 0.0, 1.0)
-		
+	if not cared_today:
+		health = clampf(health - DAILY_HEALTH_DECAY, 0.0, 1.0)
+
 	growth += DAILY_BASE_GROWTH * growth_rate
 	agitation = clampf(agitation + AGITATION_DAILY_GAIN, 0.0, 1.0)
 	cared_today = false
@@ -195,7 +190,12 @@ func advance_day() -> void:
 	_recalculate_derived_stats()
 	_update_mood()
 	add_record(_build_daily_status_text())
-	
+
+	if health <= 0.0:
+		var damage := get_scream_damage()
+		mandrake_attacked.emit(damage)
+		add_record("Mandrake lashed out, unable to hold back any longer!")
+
 #endregion
 
 #region records handling
@@ -255,7 +255,7 @@ func _update_mood() -> void:
 #endregion
 
 #region actions
-func water_mandrake() -> void:
+func water_mandrake() -> bool:
 	Inventory.use_water()
 	
 	growth += WATER_BONUS_GROWTH * growth_rate
@@ -266,20 +266,19 @@ func water_mandrake() -> void:
 	_update_maturity()
 	_recalculate_derived_stats()
 	_update_mood()
+	return true
 
-func potion_mandrake() -> void:
+func potion_mandrake() -> bool:
 	Inventory.use_potion()
 	
-	growth += POTION_BONUS_GROWTH * growth_rate
 	agitation = clampf(agitation - POTION_CALM_AMOUNT, 0.0, 1.0)
-	profit_penalty = clampf(profit_penalty + POTION_PROFIT_PENALTY, 0.0, MAX_PROFIT_PENALTY)
 	cared_today = true
 	
 	add_record("Mandrake was given a potion")
 	adjust_to_near_random_color()
-	_update_maturity()
 	_recalculate_derived_stats()
 	_update_mood()
+	return true
 
 func adjust_to_near_random_color() -> void:
 	var h := current_color.h + randf_range(-COLOR_VARIANCE, COLOR_VARIANCE)
@@ -290,14 +289,13 @@ func adjust_to_near_random_color() -> void:
 #endregion
 
 #region getters
-func _get_weight_multiplier() -> float:
-	var weight_ratio := weight / BASE_WEIGHT
-	return lerpf(1.0, MAX_WEIGHT_MULTIPLIER, clampf(weight_ratio - 1.0, 0.0, 1.0))
+func get_weight_multiplier() -> float:
+	return weight / BASE_WEIGHT
 
 func get_scream_damage() -> float:
 	var health_multiplier := lerpf(0.3, 1.5, health)
 	var mood_multiplier: float = MOOD_SCREAM_MULTIPLIER[mood]
-	var weight_multiplier := _get_weight_multiplier()
+	var weight_multiplier := get_weight_multiplier()
 	return scream_power * health_multiplier * mood_multiplier * weight_multiplier
 
 func get_variant_name() -> String:
@@ -314,8 +312,7 @@ func get_price() -> int:
 	var maturity_multiplier := 1.0 + int(current_state) * 0.75
 	var health_multiplier := lerpf(0.5, 1.5, health)
 	var risk_multiplier := lerpf(1.0, MAX_RISK_PRICE_MULTIPLIER, agitation)
-	var weight_multiplier := _get_weight_multiplier()
-	var profit_multiplier := 1.0 - profit_penalty
+	var weight_multiplier := get_weight_multiplier()
 
 	return int(round(
 		BASE_PRICE
@@ -323,7 +320,6 @@ func get_price() -> int:
 		* health_multiplier
 		* risk_multiplier
 		* weight_multiplier
-		* profit_multiplier
 	))
 	
 #endregion

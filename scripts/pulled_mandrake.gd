@@ -46,6 +46,9 @@ func _process(delta: float) -> void:
 		scream_cooldown_timer -= delta
 		if scream_cooldown_timer <= 0:
 			play("scream")
+			animation_finished.connect(
+				followed_harvester.take_damage.bind(following_mandrake.get_scream_damage()), 
+				CONNECT_ONE_SHOT)
 			scream_duration_timer = scream_duration
 			screaming = true
 

@@ -4,10 +4,11 @@ signal day_closed
 
 @onready var gui: GUI = $GUI
 @onready var mandrake_status_panel: MandrakeStatusPanel = $MandrakeStatusPanel
-@onready var black_overlay: ColorRect = $BlackOverlay
-@onready var date_label: Label = $NextDayComponent/DateLabel
-@onready var old_date_label: Label = $NextDayComponent/OldDateLabel
-@onready var click_anywhere_label: Label = $NextDayComponent/ClickAnywhereLabel
+@onready var overlay: ColorRect = $Overlay
+@onready var day_ended_overlay: ColorRect = $DayEndedComponent/DayEndedOverlay
+@onready var date_label: Label = $DayEndedComponent/DateLabel
+@onready var old_date_label: Label = $DayEndedComponent/OldDateLabel
+@onready var click_anywhere_label: Label = $DayEndedComponent/ClickAnywhereLabel
 @onready var notification: PanelContainer = $Notification
 @onready var notification_label: RichTextLabel = $Notification/NotificationLabel
 
@@ -37,7 +38,7 @@ func leave_mandrake_status() -> void:
 func blink(duration: float = 0.5, speed: float = 0.6):
 	var overlay_tween := create_tween()
 	overlay_tween.tween_property(
-		black_overlay, 
+		overlay, 
 		"modulate:a", 
 		1.0, speed).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 		
@@ -47,7 +48,7 @@ func blink(duration: float = 0.5, speed: float = 0.6):
 func open_blink(duration: float = 0.3, speed: float = 0.4):
 	var overlay_tween := create_tween()
 	overlay_tween.tween_property(
-		black_overlay, 
+		overlay, 
 		"modulate:a", 
 		0.0, speed).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 		
@@ -73,14 +74,14 @@ func make_notification(text: String) -> void:
 
 func close_the_day(today_date: String, tomorrow_date: String) -> void:
 	GameState.input_enable = false
-	var overlay_tween := create_tween()
-	overlay_tween.tween_property(
-		black_overlay, 
+	var overlay := create_tween()
+	overlay.tween_property(
+		day_ended_overlay, 
 		"modulate:a", 
 		1.0, 0.6).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	
-	overlay_tween.tween_interval(0.5)
-	await overlay_tween.finished
+	overlay.tween_interval(0.5)
+	await overlay.finished
 	day_closed.emit()
 	await _animate_date_roll(today_date, tomorrow_date)
 	
@@ -138,7 +139,7 @@ func open_the_day() -> void:
 		click_anywhere_label, 
 		"modulate:a", 0.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(
-		black_overlay, 
+		day_ended_overlay, 
 		"modulate:a", 0.0, 0.7).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	
 	GameState.input_enable = true

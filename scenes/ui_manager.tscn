@@ -22,7 +22,7 @@ script = ExtResource("1_reske")
 [node name="MandrakeStatusPanel" parent="." unique_id=1397978618 instance=ExtResource("3_ixhu3")]
 visible = false
 
-[node name="NextDayComponent" type="Control" parent="." unique_id=1739817005]
+[node name="DayEndedComponent" type="Control" parent="." unique_id=1739817005]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,7 +32,18 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("4_j2mt3")
 
-[node name="DateLabel" type="Label" parent="NextDayComponent" unique_id=1074742435]
+[node name="DayEndedOverlay" type="ColorRect" parent="DayEndedComponent" unique_id=1476918410]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="DateLabel" type="Label" parent="DayEndedComponent" unique_id=1074742435]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -48,7 +59,7 @@ grow_vertical = 2
 label_settings = SubResource("LabelSettings_356b5")
 horizontal_alignment = 1
 
-[node name="OldDateLabel" type="Label" parent="NextDayComponent" unique_id=1935719721]
+[node name="OldDateLabel" type="Label" parent="DayEndedComponent" unique_id=1935719721]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -65,7 +76,7 @@ grow_vertical = 2
 label_settings = SubResource("LabelSettings_j2mt3")
 horizontal_alignment = 1
 
-[node name="ClickAnywhereLabel" type="Label" parent="NextDayComponent" unique_id=310126854]
+[node name="ClickAnywhereLabel" type="Label" parent="DayEndedComponent" unique_id=310126854]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 7
@@ -94,7 +105,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 fit_content = true
 
-[node name="BlackOverlay" type="ColorRect" parent="." unique_id=618659169]
+[node name="Overlay" type="ColorRect" parent="." unique_id=618659169]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0

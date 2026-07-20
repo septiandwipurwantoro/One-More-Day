@@ -3,9 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://de6g8qaprslsx" path="res://scenes/player.tscn" id="1_6sg4v"]
 [ext_resource type="Texture2D" uid="uid://bvoyn3ag1722g" path="res://assets/sprites/mandrake_gargen.png" id="1_6x6ry"]
 [ext_resource type="PackedScene" uid="uid://bqkuyc1bvkbg2" path="res://scenes/mandrake_field.tscn" id="2_7dv7v"]
-[ext_resource type="Script" uid="uid://dv3omnqwtahm2" path="res://scripts/shop_area.gd" id="3_6x6ry"]
-[ext_resource type="Resource" uid="uid://8nb5r4ky8qul" path="res://dialogues/test.dialogue" id="4_bg3bc"]
+[ext_resource type="Script" uid="uid://dv3omnqwtahm2" path="res://scripts/the_keeper_area.gd" id="3_6x6ry"]
+[ext_resource type="Resource" uid="uid://dyh4t0kpndaku" path="res://dialogues/the_keeper_idle.dialogue" id="4_y2bh3"]
 [ext_resource type="Script" uid="uid://bhvxwq445wswp" path="res://scripts/water_area.gd" id="5_ngcy1"]
+[ext_resource type="Resource" uid="uid://domnf7fsfu2wa" path="res://dialogues/selling_mandrakes.dialogue" id="5_ttoy1"]
 [ext_resource type="Script" uid="uid://bd12ucoym3fa4" path="res://scripts/potion_area.gd" id="6_qorsj"]
 [ext_resource type="Texture2D" uid="uid://b20vr587aul8" path="res://assets/sprites/water.png" id="6_rupx6"]
 [ext_resource type="Script" uid="uid://dm2c4x4h2p0jp" path="res://scripts/floater.gd" id="7_rupx6"]
@@ -38,14 +39,11 @@ size = Vector2(20, 672)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttoy1"]
 size = Vector2(20, 141.00002)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_suwnt"]
-size = Vector2(20, 95)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lng5s"]
 size = Vector2(20, 248.7463)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u656f"]
-size = Vector2(240, 120)
+size = Vector2(240, 87)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ayma"]
 size = Vector2(94.68701, 178.89806)
@@ -111,7 +109,7 @@ scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_hbn7n")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Environment/Walls" unique_id=154015516]
-position = Vector2(645.49994, -680)
+position = Vector2(645.49994, -622)
 rotation = 1.5707964
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_hbn7n")
@@ -148,14 +146,6 @@ rotation = 1.5707964
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_ttoy1")
 
-[node name="CollisionShape2D16" type="CollisionShape2D" parent="Environment/Walls" unique_id=395111850]
-position = Vector2(1039, -641.5)
-shape = SubResource("RectangleShape2D_suwnt")
-
-[node name="CollisionShape2D15" type="CollisionShape2D" parent="Environment/Walls" unique_id=1792192892]
-position = Vector2(247, -642.5)
-shape = SubResource("RectangleShape2D_suwnt")
-
 [node name="CollisionShape2D17" type="CollisionShape2D" parent="Environment/Walls" unique_id=569252146]
 position = Vector2(963.44507, -519.4451)
 rotation = 0.7853982
@@ -168,26 +158,66 @@ rotation = -0.7853982
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_lng5s")
 
-[node name="MandrakeField" parent="." unique_id=1204625407 instance=ExtResource("2_7dv7v")]
+[node name="MandrakeFields" type="Node2D" parent="." unique_id=353716596]
+
+[node name="MandrakeField" parent="MandrakeFields" unique_id=1204625407 instance=ExtResource("2_7dv7v")]
 position = Vector2(345, 479)
 
-[node name="MandrakeField2" parent="." unique_id=53688692 instance=ExtResource("2_7dv7v")]
+[node name="MandrakeField2" parent="MandrakeFields" unique_id=53688692 instance=ExtResource("2_7dv7v")]
 position = Vector2(493, 477)
 
-[node name="MandrakeField3" parent="." unique_id=833351129 instance=ExtResource("2_7dv7v")]
+[node name="MandrakeField3" parent="MandrakeFields" unique_id=833351129 instance=ExtResource("2_7dv7v")]
 position = Vector2(352, 625)
 
-[node name="MandrakeField4" parent="." unique_id=1498133910 instance=ExtResource("2_7dv7v")]
+[node name="MandrakeField4" parent="MandrakeFields" unique_id=1498133910 instance=ExtResource("2_7dv7v")]
 position = Vector2(486, 626)
+
+[node name="MandrakeField5" parent="MandrakeFields" unique_id=137419858 instance=ExtResource("2_7dv7v")]
+position = Vector2(786, 468)
+
+[node name="MandrakeField6" parent="MandrakeFields" unique_id=1140450172 instance=ExtResource("2_7dv7v")]
+position = Vector2(942, 473)
+
+[node name="MandrakeField7" parent="MandrakeFields" unique_id=661974172 instance=ExtResource("2_7dv7v")]
+position = Vector2(781, 628)
+
+[node name="MandrakeField8" parent="MandrakeFields" unique_id=1998041154 instance=ExtResource("2_7dv7v")]
+position = Vector2(932, 625)
+
+[node name="MandrakeField9" parent="MandrakeFields" unique_id=1937194754 instance=ExtResource("2_7dv7v")]
+position = Vector2(932, 836)
+
+[node name="MandrakeField10" parent="MandrakeFields" unique_id=887332377 instance=ExtResource("2_7dv7v")]
+position = Vector2(929, 992)
+
+[node name="MandrakeField11" parent="MandrakeFields" unique_id=1227167322 instance=ExtResource("2_7dv7v")]
+position = Vector2(776, 992)
+
+[node name="MandrakeField12" parent="MandrakeFields" unique_id=1883026935 instance=ExtResource("2_7dv7v")]
+position = Vector2(789, 847)
+
+[node name="MandrakeField13" parent="MandrakeFields" unique_id=1434718425 instance=ExtResource("2_7dv7v")]
+position = Vector2(507, 837)
+
+[node name="MandrakeField14" parent="MandrakeFields" unique_id=587250270 instance=ExtResource("2_7dv7v")]
+position = Vector2(349, 842)
+
+[node name="MandrakeField15" parent="MandrakeFields" unique_id=809425339 instance=ExtResource("2_7dv7v")]
+position = Vector2(346, 987)
+
+[node name="MandrakeField16" parent="MandrakeFields" unique_id=1255980815 instance=ExtResource("2_7dv7v")]
+position = Vector2(501, 989)
 
 [node name="InteractableArea" type="Node2D" parent="." unique_id=982881778]
 
-[node name="ShopArea" type="Area2D" parent="InteractableArea" unique_id=1467219705]
+[node name="TheKeeperArea" type="Area2D" parent="InteractableArea" unique_id=1467219705]
 position = Vector2(651, -602)
 script = ExtResource("3_6x6ry")
-shop_dialogue = ExtResource("4_bg3bc")
+idle_dialogue = ExtResource("4_y2bh3")
+sell_mandrakes_dialogue = ExtResource("5_ttoy1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea/ShopArea" unique_id=1207165858]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea/TheKeeperArea" unique_id=1207165858]
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_u656f")
 
 [node name="WaterArea" type="Area2D" parent="InteractableArea" unique_id=374569323]
@@ -222,12 +252,9 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("9_y2bh3")
 script = ExtResource("7_rupx6")
 
-[node name="Player" parent="." unique_id=536877065 node_paths=PackedStringArray("entry_point") instance=ExtResource("1_6sg4v")]
-position = Vector2(615, 444)
-entry_point = NodePath("../EntryPoint")
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=165029062]
-scale = Vector2(0.33333334, 0.33333334)
-
 [node name="EntryPoint" type="Node2D" parent="." unique_id=880089561]
 position = Vector2(640, 1133)
+
+[node name="Player" parent="." unique_id=536877065 node_paths=PackedStringArray("entry_point") instance=ExtResource("1_6sg4v")]
+position = Vector2(644, 1021)
+entry_point = NodePath("../EntryPoint")
