@@ -187,6 +187,45 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Yes"
 
+[node name="ReturnButton" type="PanelContainer" parent="." unique_id=1385667252]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_efmwq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ReturnButton" unique_id=68839345]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ReturnButton/VBoxContainer" unique_id=1654620745]
+layout_mode = 2
+text = "Return to Main Menu?"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ReturnButton/VBoxContainer" unique_id=1961000153]
+layout_mode = 2
+
+[node name="NoReturnButton" type="Button" parent="ReturnButton/VBoxContainer/HBoxContainer" unique_id=149606773]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "No"
+
+[node name="YesReturnButton" type="Button" parent="ReturnButton/VBoxContainer/HBoxContainer" unique_id=44916876]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Yes"
+
+[connection signal="button_up" from="PauseButton" to="." method="_on_pause_button_button_up"]
 [connection signal="button_up" from="AdvanceDayButton" to="." method="_on_advance_day_button_button_up"]
 [connection signal="button_up" from="AdvanceDayConfimationPanel/VBoxContainer/HBoxContainer/WaitButton" to="." method="_on_wait_button_button_up"]
 [connection signal="button_up" from="AdvanceDayConfimationPanel/VBoxContainer/HBoxContainer/YesButton" to="." method="_on_yes_button_button_up"]
+[connection signal="button_up" from="ReturnButton/VBoxContainer/HBoxContainer/NoReturnButton" to="." method="_on_no_return_button_button_up"]
+[connection signal="button_up" from="ReturnButton/VBoxContainer/HBoxContainer/YesReturnButton" to="." method="_on_yes_return_button_button_up"]

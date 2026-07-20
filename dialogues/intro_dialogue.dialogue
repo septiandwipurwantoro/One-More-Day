@@ -1,37 +1,36 @@
 ~ start
-Keeper: Ah… you're awake.
-Keeper: Good. I was beginning to think I'd have to find another botanist.
-Keeper: Don't look so frightened.
-Keeper: If I wanted you dead, we wouldn't be having this conversation.
+The Keeper: Ah… you're awake.
+The Keeper: Good. I was beginning to think I'd have to find another botanist.
+The Keeper: Don't look so frightened.
+The Keeper: If I wanted you dead, we wouldn't be having this conversation.
 do UIManager.open_blink()
-Keeper: My name is The Keeper.
-Keeper: Yours doesn't matter. Not yet.
-Keeper: I have only one request.
-Keeper: Grow Mandrakes for me.
+The Keeper: My name is The Keeper.
+The Keeper: Yours doesn't matter. Not yet.
+The Keeper: I have only one request.
+The Keeper: Grow Mandrakes for me.
 
 - Why me?
-	Keeper: Because you're a botanist.
-	Keeper: You understand how to keep fragile things alive.
-	Keeper: That's all I require.
+	The Keeper: Because you're a botanist.
+	The Keeper: You understand how to keep fragile things alive.
+	The Keeper: That's all I require.
 - Where am I?
-	Keeper: Somewhere you cannot leave.
-	Keeper: The walls know their purpose.
-	Keeper: So do the doors.
+	The Keeper: Somewhere you cannot leave.
+	The Keeper: The walls know their purpose.
+	The Keeper: So do the doors.
 - What are you?
-	Keeper: …
-	Keeper: A keeper.
-	Keeper: Isn't that enough?
+	The Keeper: …
+	The Keeper: A keeper.
+	The Keeper: Isn't that enough?
 
-Keeper: Your tools are ready.
-Keeper: Your first seeds are waiting.
-Keeper: Your garden is prepared.
-Keeper: Everything you need has already been provided.
-Keeper: Today, it is free.
-Keeper: Don't mistake that for kindness.
-Keeper: Nothing is ever free twice.
-Keeper: Eventually…
-Keeper: Everything finds its way back to me.
-Keeper: Now.
-Keeper: Grow.
-=> END
+The Keeper: Your tools are ready.
+The Keeper: Your first seeds are waiting.
+The Keeper: Your garden is prepared.
+The Keeper: Everything you need has already been provided.
+The Keeper: Today, it is free.
+The Keeper: Don't mistake that for kindness.
+The Keeper: Nothing is ever free twice.
+The Keeper: Eventually…
+The Keeper: Everything finds its way back to me.
+The Keeper: Now.
+The Keeper: Grow.
 => END

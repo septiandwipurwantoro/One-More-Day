@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="One More Day"
-run/main_scene="uid://bfcbs4javfwsi"
+run/main_scene="uid://ck4482gf3kn7h"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -23,6 +23,7 @@ GameState="*uid://b8wjrwug2kv2p"
 Inventory="*uid://cnenusi5yy6m0"
 AudioManager="*uid://dnlyke6kfdjj"
 PlayerStats="*uid://cv2g88ujj8hp4"
+Transition="*uid://cm54706005aji"
 
 [display]
 

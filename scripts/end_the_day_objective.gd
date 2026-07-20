@@ -10,7 +10,8 @@ func is_objective_completed() -> bool:
 	return true if day_advanced else false
 
 func end_objective() -> bool:
-	return false
+	GameState.set_objective(DeliverTheHarvestObjective.new())
+	return true
 	
 func get_objective_name() -> String:
 	return "first day"

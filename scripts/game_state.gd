@@ -1,7 +1,7 @@
 extends Node
 
 signal day_advanced
-signal  object_set_up(objective: Objective)
+signal  objective_set_up(objective: Objective)
 signal objective_completed
 
 var input_enable := true
@@ -60,7 +60,7 @@ func set_objective(objective: Objective) -> bool:
 	
 	current_objective = objective
 	current_objective.start_objective()
-	object_set_up.emit(objective)
+	objective_set_up.emit(objective)
 	return true
 
 func _objective_completed() -> void:

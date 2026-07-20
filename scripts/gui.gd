@@ -7,6 +7,9 @@ class_name GUI
 @onready var gold_label: Label = %GoldLabel
 @onready var water_container: HBoxContainer = %WaterContainer
 @onready var potion_container: HBoxContainer = %PotionContainer
+@onready var return_button: PanelContainer = $ReturnButton
+
+@onready var main_menu_scene := "res://scenes/main_menu.tscn"
 
 var _displayed_gold: int = 0
 var gold_tween: Tween
@@ -95,3 +98,15 @@ func _on_wait_button_button_up() -> void:
 func _on_yes_button_button_up() -> void:
 	GameState.advance_day()
 	advance_day_confimation_panel.hide()
+
+func _on_pause_button_button_up() -> void:
+	GameState.input_enable = false
+	return_button.show()
+	
+func _on_no_return_button_button_up() -> void:
+	GameState.input_enable = true
+	return_button.hide()
+
+func _on_yes_return_button_button_up() -> void:
+	GameState.input_enable = true
+	Transition.change_scene(main_menu_scene)
