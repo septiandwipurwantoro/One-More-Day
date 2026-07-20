@@ -149,6 +149,7 @@ func _on_use_potion_button_button_up() -> void:
 
 func _on_harvest_button_button_up() -> void:
 	_disable_all_buttons()
+	UIManager.hide_objective()
 	
 	await UIManager.blink(0.0, 0.1)
 	await UIManager.open_blink()
@@ -170,6 +171,7 @@ func _on_harvest_button_button_up() -> void:
 	GameState.harvest(current_field.planted_mandrake, current_inspector)
 	
 	current_field = null
+	UIManager.show_objective()
 	UIManager.leave_mandrake_status()
 
 func _on_leave_button_button_up() -> void:

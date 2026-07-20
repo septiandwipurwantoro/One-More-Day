@@ -17,6 +17,7 @@ func plant() -> void:
 	planted_mandrake.create()
 	GameState.mandrake_fields[self] = planted_mandrake
 	
+	mandrake_sprite.scale = Vector2.ONE * planted_mandrake.get_weight_multiplier() * 0.5
 	mandrake_sprite.show()
 
 func scream() -> void:
@@ -54,3 +55,5 @@ func _on_maturity_changed(maturity: Mandrake.Maturity) -> void:
 			mandrake_sprite.play("young")
 		Mandrake.Maturity.MATURE:
 			mandrake_sprite.play("mature")
+	
+	mandrake_sprite.scale = Vector2.ONE * planted_mandrake.get_weight_multiplier() * 0.5

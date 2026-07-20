@@ -51,6 +51,7 @@ offset_right = 127.0
 offset_bottom = -112.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 32
 
 [node name="StartGameButton" type="Button" parent="VBoxContainer" unique_id=1234630129]
 layout_mode = 2
@@ -75,3 +76,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[connection signal="button_up" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_button_button_up"]
+[connection signal="button_up" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_button_up"]

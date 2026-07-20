@@ -11,6 +11,7 @@ signal day_closed
 @onready var click_anywhere_label: Label = $DayEndedComponent/ClickAnywhereLabel
 @onready var notification: PanelContainer = $Notification
 @onready var notification_label: RichTextLabel = $Notification/NotificationLabel
+@onready var objective_panel: PanelContainer = $ObjectivePanel
 
 var ready_next_day := false
 var offscreen_x: float
@@ -37,6 +38,8 @@ func leave_mandrake_status() -> void:
 
 func show_gui() -> void: gui.show()
 func hide_gui() -> void: gui.hide()
+func show_objective() -> void: objective_panel.show_objective()
+func hide_objective() -> void: objective_panel.hide_objective()
 
 func enable_overlay() -> void:
 	overlay.modulate.a = 1.0
