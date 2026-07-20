@@ -21,3 +21,4 @@ Label/fonts/font = ExtResource("1_xgdp2")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_64js0")
 RichTextLabel/font_sizes/normal_font_size = 18
 RichTextLabel/fonts/normal_font = ExtResource("1_xgdp2")
+VBoxContainer/constants/separation = 16

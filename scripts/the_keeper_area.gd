@@ -11,7 +11,12 @@ func interact(customer: Player) -> void:
 	_idle_interaction()
 	
 func _idle_interaction() -> void:
+	GameState.input_enable = false
+	
 	DialogueManager.show_dialogue_balloon(idle_dialogue, "start")
+	await DialogueManager.dialogue_ended
+	
+	GameState.input_enable = true
 
 func _sell_mandrakes(customer: Player) -> void:
 	GameState.input_enable = false

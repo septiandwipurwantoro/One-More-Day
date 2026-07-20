@@ -42,7 +42,6 @@ func _on_day_advanced() -> void:
 	if planted_mandrake:
 		planted_mandrake.advance_day()
 	
-		print(Vector2.ONE * planted_mandrake.get_weight_multiplier())
 		mandrake_sprite.scale = Vector2.ONE * planted_mandrake.get_weight_multiplier() * 0.5
 
 func _on_maturity_changed(maturity: Mandrake.Maturity) -> void:

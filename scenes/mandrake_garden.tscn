@@ -2,7 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://de6g8qaprslsx" path="res://scenes/player.tscn" id="1_6sg4v"]
 [ext_resource type="Texture2D" uid="uid://bvoyn3ag1722g" path="res://assets/sprites/mandrake_gargen.png" id="1_6x6ry"]
+[ext_resource type="Script" uid="uid://cqp1unvcenths" path="res://scripts/mandrake_garden.gd" id="1_lng5s"]
 [ext_resource type="PackedScene" uid="uid://bqkuyc1bvkbg2" path="res://scenes/mandrake_field.tscn" id="2_7dv7v"]
+[ext_resource type="Resource" uid="uid://g3p1e4krkv11" path="res://dialogues/intro_dialogue.dialogue" id="2_suwnt"]
 [ext_resource type="Script" uid="uid://dv3omnqwtahm2" path="res://scripts/the_keeper_area.gd" id="3_6x6ry"]
 [ext_resource type="Resource" uid="uid://dyh4t0kpndaku" path="res://dialogues/the_keeper_idle.dialogue" id="4_y2bh3"]
 [ext_resource type="Script" uid="uid://bhvxwq445wswp" path="res://scripts/water_area.gd" id="5_ngcy1"]
@@ -49,6 +51,8 @@ size = Vector2(240, 87)
 size = Vector2(94.68701, 178.89806)
 
 [node name="MandrakeGarden" type="Node2D" unique_id=1938493377]
+script = ExtResource("1_lng5s")
+intro_dialogue = ExtResource("2_suwnt")
 
 [node name="Environment" type="Node2D" parent="." unique_id=1489881899]
 
@@ -256,5 +260,5 @@ script = ExtResource("7_rupx6")
 position = Vector2(640, 1133)
 
 [node name="Player" parent="." unique_id=536877065 node_paths=PackedStringArray("entry_point") instance=ExtResource("1_6sg4v")]
-position = Vector2(644, 1021)
+position = Vector2(460, -546)
 entry_point = NodePath("../EntryPoint")

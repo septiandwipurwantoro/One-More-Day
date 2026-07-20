@@ -1,0 +1,37 @@
+~ start
+Keeper: Ah… you're awake.
+Keeper: Good. I was beginning to think I'd have to find another botanist.
+Keeper: Don't look so frightened.
+Keeper: If I wanted you dead, we wouldn't be having this conversation.
+do UIManager.open_blink()
+Keeper: My name is The Keeper.
+Keeper: Yours doesn't matter. Not yet.
+Keeper: I have only one request.
+Keeper: Grow Mandrakes for me.
+
+- Why me?
+	Keeper: Because you're a botanist.
+	Keeper: You understand how to keep fragile things alive.
+	Keeper: That's all I require.
+- Where am I?
+	Keeper: Somewhere you cannot leave.
+	Keeper: The walls know their purpose.
+	Keeper: So do the doors.
+- What are you?
+	Keeper: …
+	Keeper: A keeper.
+	Keeper: Isn't that enough?
+
+Keeper: Your tools are ready.
+Keeper: Your first seeds are waiting.
+Keeper: Your garden is prepared.
+Keeper: Everything you need has already been provided.
+Keeper: Today, it is free.
+Keeper: Don't mistake that for kindness.
+Keeper: Nothing is ever free twice.
+Keeper: Eventually…
+Keeper: Everything finds its way back to me.
+Keeper: Now.
+Keeper: Grow.
+=> END
+=> END

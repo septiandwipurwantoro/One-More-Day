@@ -20,21 +20,27 @@ var notification_tween: Tween
 
 func _ready() -> void:
 	offscreen_x = notification.position.x
-	onscreen_x = offscreen_x - notification.size.x
+	onscreen_x = offscreen_x - notification.size.x - 32
 		
 func show_mandrake_status(inspector: Player, mandrake: MandrakeField) -> void:
 	GameState.input_enable = false
 	mandrake_status_panel.setup_panel(inspector, mandrake)
 	
-	gui.hide()
+	hide_gui()
 	mandrake_status_panel.show()
 	
 func leave_mandrake_status() -> void:
 	GameState.input_enable = true
 	
 	mandrake_status_panel.hide()
-	gui.show()
-	
+	show_gui()
+
+func show_gui() -> void: gui.show()
+func hide_gui() -> void: gui.hide()
+
+func enable_overlay() -> void:
+	overlay.modulate.a = 1.0
+
 func blink(duration: float = 0.5, speed: float = 0.6):
 	var overlay_tween := create_tween()
 	overlay_tween.tween_property(
@@ -60,7 +66,7 @@ func make_notification(text: String) -> void:
 	notification.position.x = offscreen_x
 	
 	if notification_tween: notification_tween.kill()
-	var notification_tween := create_tween()
+	notification_tween = create_tween()
 	notification_tween.tween_property(
 		notification, 
 		"position:x", 
@@ -68,9 +74,9 @@ func make_notification(text: String) -> void:
 		
 	notification_tween.tween_interval(5.0)
 	notification_tween.tween_property(
-	notification, 
-	"position:x", 
-	offscreen_x, 0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+		notification, 
+		"position:x", 
+		offscreen_x, 0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 
 func close_the_day(today_date: String, tomorrow_date: String) -> void:
 	GameState.input_enable = false
